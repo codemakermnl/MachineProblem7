@@ -178,7 +178,7 @@ public class GradeReportSystem {
     public static void viewTuition() {
         showCoursesTaken();
         showTotalUnitsAndSubjects();;
-        System.out.println("Billing Amount: " + studentBillingService.getBillingAmount(student));
+        System.out.println("Billing Amount: " + format.format(studentBillingService.getBillingAmount(student)));
         System.out.println("Note: 1 unit = PHP 1500");
     }
 
