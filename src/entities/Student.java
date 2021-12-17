@@ -76,7 +76,7 @@ public class Student {
     }
 
     public boolean hasCourse(Course course) {
-        for( Course courseTaken : coursesTaken ) {
+        for( CourseTaken courseTaken : coursesTaken ) {
             if( course.equals(courseTaken) ) {
                 return true;
             }

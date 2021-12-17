@@ -120,7 +120,14 @@ public class GradeReportSystem {
         System.out.print("Enter number of units: ");
         double numberOfUnits = sc.nextInt();
 
-        courseService.addCourse( new Course(courseCode, courseDescription, numberOfUnits));
+        Course n = new Course(courseCode, courseDescription, numberOfUnits);
+
+        if( SubjectData.getSubjects().contains(n) ) {
+            System.err.println("That course is already added");
+            return;
+        }
+
+        courseService.addCourse( n );
 
         System.out.println("Course successfully added.");
     }
@@ -145,7 +152,7 @@ public class GradeReportSystem {
         int choice = sc.nextInt();
 
         if( choice < 1 || choice > SubjectData.getSubjects().size() ) {
-            System.err.println("Please enter a grade level of 1 to " + SubjectData.getSubjects().size() +" only.");
+            System.err.println("Please enter a subject from 1 to " + SubjectData.getSubjects().size()+1 +" only.");
             return;
         }
 
@@ -158,6 +165,11 @@ public class GradeReportSystem {
 
         System.out.print("Enter student grade (60 to 100 only. lowest is 0, highest is 100, passing is 60): ");
         double rawGrade = sc.nextDouble();
+
+        if( rawGrade < 0 || rawGrade > 100 ) {
+            System.err.println("Please enter a grade from 1 to 100 only. passing is 60, highest is 100.");
+            return;
+        }
 
         courseTaken.setComputedGrade( transmutationService.transmute(rawGrade) );
 
@@ -178,7 +190,7 @@ public class GradeReportSystem {
     public static void viewTuition() {
         showCoursesTaken();
         showTotalUnitsAndSubjects();;
-        System.out.println("Billing Amount: " + format.format(studentBillingService.getBillingAmount(student)));
+        System.out.println("Billing Amount: PHP " + format.format(studentBillingService.getBillingAmount(student)));
         System.out.println("Note: 1 unit = PHP 1500");
     }
 

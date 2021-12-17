@@ -23,6 +23,6 @@ public class CourseTaken extends Course {
 
     @Override
     public String toString() {
-        return super.toString()  + computedGrade;
+        return super.toString() +" " + computedGrade;
     }
 }
