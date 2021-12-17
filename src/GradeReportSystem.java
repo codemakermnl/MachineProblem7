@@ -184,7 +184,7 @@ public class GradeReportSystem {
         }
         showCoursesTaken();
         showTotalUnitsAndSubjects();
-        System.out.println("GPA: " + studentCourseGradeService.calculateGPA(student));
+        System.out.println("GPA: " + format.format(studentCourseGradeService.calculateGPA(student)));
     }
 
     public static void viewTuition() {
